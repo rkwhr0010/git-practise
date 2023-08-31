@@ -4,9 +4,8 @@ const $ = require('jquery')(dom.window)
 
 //VIP & MVG 고객 수 현황 조회 후 콜백 (화면에 데이터 세팅)
 function makeMvgCnt2(dataArr) {
-    //사본 사용
     const dataArrCopy = JSON.parse(JSON.stringify(dataArr));
-    //상수 정의
+    
     const AVE_B = 'aveB';
     const AVE = 'ave';
     const AVE_G1 = 'aveG1';
@@ -23,9 +22,9 @@ function makeMvgCnt2(dataArr) {
     const aveG1BodyHtml = _createAveBodyHtml(dataArrCopy, AVE_G1);// GREEN/ PRE 현황(당점)
 
     //HTML 태그 하단 합계 추가
-    const aveBfooterHtml = _createListHtml('AVE-B 합계', comma(_formatingNumber(aveBTot)));
-    const avefooterHtml = _createListHtml('AVE 합계', comma(_formatingNumber(aveTot)));
-    const aveG1footerHtml = _createListHtml('AVE-G1 합계', comma(_formatingNumber(aveG1Tot)));
+    const aveBfooterHtml = `\n${_createListHtml('AVE-B 합계', comma(_formatingNumber(aveBTot)))}`;
+    const avefooterHtml = `\n${_createListHtml('AVE 합계', comma(_formatingNumber(aveTot)))}`;
+    const aveG1footerHtml = `\n${_createListHtml('AVE-G1 합계', comma(_formatingNumber(aveG1Tot)))}`;
 
     //"우수고객수 현황" 오른쪽 집계 생성
     const branchType = $('#str_cd').val() == '0000' ? '전사' : '당점';

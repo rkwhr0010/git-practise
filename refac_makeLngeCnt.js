@@ -1,4 +1,4 @@
-
+//미완
 // 작년 및 올해 라운지 총 이용 건수 조회 후 콜백  (화면에 데이터 세팅)
 function makeLngeCnt(data){
     var VST_CUST_CNT  = 0;
