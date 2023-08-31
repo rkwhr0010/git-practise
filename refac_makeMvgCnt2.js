@@ -18,28 +18,28 @@ function makeMvgCnt2(dataArr) {
     const totTot = aveBTot + aveTot + aveG1Tot; // 전사 합계
 
     //HTML 태그 생성
-    let aveBHtml = _createAveBodyHtml(dataArrCopy, AVE_B);// AVENUEL현황 1
-    let aveHtml = _createAveBodyHtml(dataArrCopy, AVE);// AVENUEL현황 2
-    let aveG1Html = _createAveBodyHtml(dataArrCopy, AVE_G1);// GREEN/ PRE 현황(당점)
+    const aveBBodyHtml = _createAveBodyHtml(dataArrCopy, AVE_B);// AVENUEL현황 1
+    const aveBodyHtml = _createAveBodyHtml(dataArrCopy, AVE);// AVENUEL현황 2
+    const aveG1BodyHtml = _createAveBodyHtml(dataArrCopy, AVE_G1);// GREEN/ PRE 현황(당점)
 
     //HTML 태그 하단 합계 추가
-    aveBHtml += '\n' + _createListHtml('AVE-B 합계', comma(_formatingNumber(aveBTot)));
-    aveHtml += '\n' + _createListHtml('AVE 합계', comma(_formatingNumber(aveTot)));
-    aveG1Html += '\n' + _createListHtml('AVE-G1 합계', comma(_formatingNumber(aveG1Tot)));
+    const aveBfooterHtml = _createListHtml('AVE-B 합계', comma(_formatingNumber(aveBTot)));
+    const avefooterHtml = _createListHtml('AVE 합계', comma(_formatingNumber(aveTot)));
+    const aveG1footerHtml = _createListHtml('AVE-G1 합계', comma(_formatingNumber(aveG1Tot)));
 
     //"우수고객수 현황" 오른쪽 집계 생성
     const branchType = $('#str_cd').val() == '0000' ? '전사' : '당점';
     const titleHtml = ` (${branchType}) : ${comma(_formatingNumber(totTot))}명`;
 
     //랜더링
-    $('#MvgA').html(aveBHtml);
-    $('#MvgM').html(aveHtml);
-    $('#MvgV').html(aveG1Html);
+    $('#MvgA').html(aveBBodyHtml + aveBfooterHtml);
+    $('#MvgM').html(aveBodyHtml + avefooterHtml);
+    $('#MvgV').html(aveG1BodyHtml + aveG1footerHtml);
     $('#title3Level').html(titleHtml);
 
-    console.log(aveBHtml);
-    console.log(aveHtml);
-    console.log(aveG1Html);
+    console.log(aveBBodyHtml + aveBfooterHtml);
+    console.log(aveBodyHtml + avefooterHtml);
+    console.log(aveG1BodyHtml + aveG1footerHtml);
     console.log(titleHtml);
 
     return;
