@@ -22,13 +22,13 @@ function makeMvgCnt2(dataArr) {
     const aveG1BodyHtml = _createAveBodyHtml(dataArrCopy, AVE_G1);// GREEN/ PRE 현황(당점)
 
     //HTML 태그 하단 합계 추가
-    const aveBfooterHtml = `\n${_createListHtml('AVE-B 합계', comma(_formatingNumber(aveBTot)))}`;
-    const avefooterHtml = `\n${_createListHtml('AVE 합계', comma(_formatingNumber(aveTot)))}`;
-    const aveG1footerHtml = `\n${_createListHtml('AVE-G1 합계', comma(_formatingNumber(aveG1Tot)))}`;
+    const aveBfooterHtml = `\n\${_createListHtml('AVE-B 합계', comma(_formatingNumber(aveBTot)))}`;
+    const avefooterHtml = `\n\${_createListHtml('AVE 합계', comma(_formatingNumber(aveTot)))}`;
+    const aveG1footerHtml = `\n\${_createListHtml('AVE-G1 합계', comma(_formatingNumber(aveG1Tot)))}`;
 
     //"우수고객수 현황" 오른쪽 집계 생성
     const branchType = $('#str_cd').val() == '0000' ? '전사' : '당점';
-    const titleHtml = ` (${branchType}) : ${comma(_formatingNumber(totTot))}명`;
+    const titleHtml = ` (\${branchType}) : \${comma(_formatingNumber(totTot))}명`;
 
     //랜더링
     $('#MvgA').html(aveBBodyHtml + aveBfooterHtml);
@@ -36,10 +36,10 @@ function makeMvgCnt2(dataArr) {
     $('#MvgV').html(aveG1BodyHtml + aveG1footerHtml);
     $('#title3Level').html(titleHtml);
 
-    console.log(aveBBodyHtml + aveBfooterHtml);
-    console.log(aveBodyHtml + avefooterHtml);
-    console.log(aveG1BodyHtml + aveG1footerHtml);
-    console.log(titleHtml);
+    // console.log(aveBBodyHtml + aveBfooterHtml);
+    // console.log(aveBodyHtml + avefooterHtml);
+    // console.log(aveG1BodyHtml + aveG1footerHtml);
+    // console.log(titleHtml);
 
     return;
 
@@ -64,8 +64,8 @@ function makeMvgCnt2(dataArr) {
         const html = [];
 
         html.push(`<li>`);
-        html.push(` <strong>${name}</strong>`);
-        html.push(` <em>${comma(count)}명</em>`);
+        html.push(` <strong>\${name}</strong>`);
+        html.push(` <em>\${comma(count)}명</em>`);
         html.push(`</li>`);
 
         return html.join("\n");
@@ -95,7 +95,7 @@ function makeMvgCnt2(dataArr) {
                         && EXCLL_CUST_PGM_CD == '1'
                         && EXCLL_CUST_TP_CD == '2');
             default:
-                throw new Error(`집계할 수 없는 등급 '${aveTypeName}' 확인 됐습니다.`)
+                throw new Error(`집계할 수 없는 등급 '\${aveTypeName}' 확인 됐습니다.`)
         }
     }
     function _formatingNumber(number) {

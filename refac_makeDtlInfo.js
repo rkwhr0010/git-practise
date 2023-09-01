@@ -24,13 +24,13 @@ function makeDtlInfo({
     function _createLoungeHtml() {
         const html = [];
 
-        html.push(_createListHtml(`입실객수  :`, `${comma(VST_CUST_CNT)}명`));
-        html.push(_createListHtml(`인당 평균 체류시간  :`, `${VAT_TIME}분`));
-        html.push(_createListHtml(`라운지 회전율  :`, `${LGNE_TOVRRT}`));
-        html.push(_createListHtml(`인당 평균 음료건수  :`, `${comma(DRNK_ORD_PRDC_CNT)}잔`));
-        html.push(_createListHtml(`구매율  :`, `${ORD_CHG_TOVRRT}%`));
-        html.push(_createListHtml(`구매금액  :`, `${comma(SLNG_AMT)}백만원`));
-        html.push(_createListHtml(`객단가  :`, `${comma(PCH_CUST_AMT)}천원`));
+        html.push(_createListHtml(`입실객수  :`, `\${comma(VST_CUST_CNT)}명`));
+        html.push(_createListHtml(`인당 평균 체류시간  :`, `\${VAT_TIME}분`));
+        html.push(_createListHtml(`라운지 회전율  :`, `\${LGNE_TOVRRT}`));
+        html.push(_createListHtml(`인당 평균 음료건수  :`, `\${comma(DRNK_ORD_PRDC_CNT)}잔`));
+        html.push(_createListHtml(`구매율  :`, `\${ORD_CHG_TOVRRT}%`));
+        html.push(_createListHtml(`구매금액  :`, `\${comma(SLNG_AMT)}백만원`));
+        html.push(_createListHtml(`객단가  :`, `\${comma(PCH_CUST_AMT)}천원`));
 
         return html.join('\n');
     }
@@ -38,8 +38,8 @@ function makeDtlInfo({
     function _createListHtml(left, right){
         const tag = [];
         tag.push(`<li>`);
-        tag.push(`  <span class="lanunge_left">${left}</span>`);
-        tag.push(`  <span class="lanunge_right">${right}</span>`);
+        tag.push(`  <span class="lanunge_left">\${left}</span>`);
+        tag.push(`  <span class="lanunge_right">\${right}</span>`);
         tag.push(`</li>`);
 
         return tag.join('\n');
