@@ -1,3 +1,256 @@
+const jsdom = require('jsdom')
+const dom = new jsdom.JSDOM("")
+const $ = require('jquery')(dom.window)
+
+
+
+function isEmpty(val) {
+	if (val == null || val == '' || val == undefined || ( val != null && typeof val == "object" && !Object.keys(val).length )) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+function isNotEmpty(val) {
+	return !isEmpty(val);
+}
+
+//mvgLngeTotAvgDt  샘플 데이터
+let  mvgLngeTotAvgDt =
+[
+    {
+        "DT_LOW": "18",
+        "STY_TM_MICNT": 0,
+        "LGNE_TOVRRT": 0,
+        "VST_DT": "20230818",
+        "VST_CUST_CNT": 0,
+        "PCH_AMT": 0,
+        "DT_DAY": 6,
+        "ORD_CNT_QTY": 0,
+        "PCH_CUST_CNT": 0,
+        "GRID_TYPE": "D"
+    },
+    {
+        "DT_LOW": "19",
+        "STY_TM_MICNT": 0,
+        "LGNE_TOVRRT": 0,
+        "VST_DT": "20230819",
+        "VST_CUST_CNT": 0,
+        "PCH_AMT": 0,
+        "DT_DAY": 7,
+        "ORD_CNT_QTY": 0,
+        "PCH_CUST_CNT": 0,
+        "GRID_TYPE": "D"
+    },
+    {
+        "DT_LOW": "20",
+        "STY_TM_MICNT": 0,
+        "LGNE_TOVRRT": 0,
+        "VST_DT": "20230820",
+        "VST_CUST_CNT": 0,
+        "PCH_AMT": 0,
+        "DT_DAY": 1,
+        "ORD_CNT_QTY": 0,
+        "PCH_CUST_CNT": 0,
+        "GRID_TYPE": "D"
+    },
+    {
+        "DT_LOW": "21",
+        "STY_TM_MICNT": 0,
+        "LGNE_TOVRRT": 0,
+        "VST_DT": "20230821",
+        "VST_CUST_CNT": 0,
+        "PCH_AMT": 0,
+        "DT_DAY": 2,
+        "ORD_CNT_QTY": 0,
+        "PCH_CUST_CNT": 0,
+        "GRID_TYPE": "D"
+    },
+    {
+        "DT_LOW": "22",
+        "STY_TM_MICNT": 0,
+        "LGNE_TOVRRT": 0,
+        "VST_DT": "20230822",
+        "VST_CUST_CNT": 0,
+        "PCH_AMT": 0,
+        "DT_DAY": 3,
+        "ORD_CNT_QTY": 0,
+        "PCH_CUST_CNT": 0,
+        "GRID_TYPE": "D"
+    },
+    {
+        "DT_LOW": "23",
+        "STY_TM_MICNT": 0,
+        "LGNE_TOVRRT": 0,
+        "VST_DT": "20230823",
+        "VST_CUST_CNT": 0,
+        "PCH_AMT": 0,
+        "DT_DAY": 4,
+        "ORD_CNT_QTY": 0,
+        "PCH_CUST_CNT": 0,
+        "GRID_TYPE": "D"
+    },
+    {
+        "DT_LOW": "24",
+        "STY_TM_MICNT": 0,
+        "LGNE_TOVRRT": 0,
+        "VST_DT": "20230824",
+        "VST_CUST_CNT": 0,
+        "PCH_AMT": 0,
+        "DT_DAY": 5,
+        "ORD_CNT_QTY": 0,
+        "PCH_CUST_CNT": 0,
+        "GRID_TYPE": "D"
+    },
+    {
+        "DT_LOW": "25",
+        "STY_TM_MICNT": 0,
+        "LGNE_TOVRRT": 0,
+        "VST_DT": "20230825",
+        "VST_CUST_CNT": 0,
+        "PCH_AMT": 0,
+        "DT_DAY": 6,
+        "ORD_CNT_QTY": 0,
+        "PCH_CUST_CNT": 0,
+        "GRID_TYPE": "D"
+    },
+    {
+        "DT_LOW": "26",
+        "STY_TM_MICNT": 0,
+        "LGNE_TOVRRT": 0,
+        "VST_DT": "20230826",
+        "VST_CUST_CNT": 0,
+        "PCH_AMT": 0,
+        "DT_DAY": 7,
+        "ORD_CNT_QTY": 0,
+        "PCH_CUST_CNT": 0,
+        "GRID_TYPE": "D"
+    },
+    {
+        "DT_LOW": "27",
+        "STY_TM_MICNT": 0,
+        "LGNE_TOVRRT": 0,
+        "VST_DT": "20230827",
+        "VST_CUST_CNT": 0,
+        "PCH_AMT": 0,
+        "DT_DAY": 1,
+        "ORD_CNT_QTY": 0,
+        "PCH_CUST_CNT": 0,
+        "GRID_TYPE": "D"
+    },
+    {
+        "DT_LOW": "28",
+        "STY_TM_MICNT": 0,
+        "LGNE_TOVRRT": 0,
+        "VST_DT": "20230828",
+        "VST_CUST_CNT": 0,
+        "PCH_AMT": 0,
+        "DT_DAY": 2,
+        "ORD_CNT_QTY": 0,
+        "PCH_CUST_CNT": 0,
+        "GRID_TYPE": "D"
+    },
+    {
+        "DT_LOW": "29",
+        "STY_TM_MICNT": 0,
+        "LGNE_TOVRRT": 0,
+        "VST_DT": "20230829",
+        "VST_CUST_CNT": 0,
+        "PCH_AMT": 0,
+        "DT_DAY": 3,
+        "ORD_CNT_QTY": 0,
+        "PCH_CUST_CNT": 0,
+        "GRID_TYPE": "D"
+    },
+    {
+        "DT_LOW": "30",
+        "STY_TM_MICNT": 0,
+        "LGNE_TOVRRT": 0,
+        "VST_DT": "20230830",
+        "VST_CUST_CNT": 0,
+        "PCH_AMT": 0,
+        "DT_DAY": 4,
+        "ORD_CNT_QTY": 0,
+        "PCH_CUST_CNT": 0,
+        "GRID_TYPE": "D"
+    },
+    {
+        "DT_LOW": "31",
+        "STY_TM_MICNT": 0,
+        "LGNE_TOVRRT": 0,
+        "VST_DT": "20230831",
+        "VST_CUST_CNT": 0,
+        "PCH_AMT": 0,
+        "DT_DAY": 5,
+        "ORD_CNT_QTY": 0,
+        "PCH_CUST_CNT": 0,
+        "GRID_TYPE": "D"
+    }
+];
+
+
+Map = function(){
+    this.map = new Object();
+   };
+   Map.prototype = {
+       put : function(key, value){
+           this.map[key] = value;
+       },
+       get : function(key){
+           return this.map[key];
+       },
+       isEmpty : function(key){
+        return (this.size() == 0);
+       },
+       clear : function(){
+        for(var prop in this.map){
+         delete this.map[prop];
+        }
+       },
+       remove : function(key){
+        delete this.map[key];
+       },
+       keys : function(){
+           var keys = new Array();
+           for(var prop in this.map){
+               keys.push(prop);
+           }
+           return keys;
+       },
+       values : function(){
+        var values = new Array();
+           for(var prop in this.map){
+            values.push(this.map[prop]);
+           }
+           return values;
+       },
+       size : function(){
+         var count = 0;
+         for (var prop in this.map) {
+           count++;
+         }
+         return count;
+       }
+   };
+
+/**
+ * 코드 의존성
+ */
+
+
+
+
+
+
+
+
+
+
+
+var lDate = [];
+var searchDate = [];
 /**
  * 오늘 제외 이전 14일 치 데이터를 그래프로 찍는다.
  */
@@ -5,7 +258,12 @@
 
 //점계/AVENUEL/MVG/VIP 별 라운지 이용 현황 조회
 function makeMvgLngeAvgDt(type){
+    //사이드 이팩트 방지
+    const mvgLngeTotAvgDt = [];//JSON.parse(JSON.stringify(mvgLngeTotAvgDt));
+
+    //지우기
     $('#graph_line').children().remove();
+
     var serData1 = [];
     var serData2 = [];
     var serData3 = [];
@@ -20,33 +278,96 @@ function makeMvgLngeAvgDt(type){
     var dateMap  = new Map();
     var i = 1;
 
-    //
-    $.each(mvgLngeTotAvgDt, function(index, item){
-        if(item.GRID_TYPE == 'D'){
-            var tf  = $.inArray(item.VST_DT, lDate2);
-            var tf1 = $.inArray(item.EXCLL_CUST_LNGE_CD, gubun);
-            if(tf < 0 ){
-                if(item.DT_DAY == "1"){
-                    lDate.push("<div style='color:red;'>" + item.DT_LOW + "</div>");
-                } else if(item.DT_DAY == "7"){
-                    lDate.push("<div style='color:blue;'>" + item.DT_LOW + "</div>");
-                } else{
-                    lDate.push(item.DT_LOW);
-                }
+/*
+{
+        "DT_LOW": "31",
+        "STY_TM_MICNT": 0,
+        "LGNE_TOVRRT": 0,
+        "VST_DT": "20230831",
+        "VST_CUST_CNT": 0,
+        "PCH_AMT": 0,
+        "DT_DAY": 5,
+        "ORD_CNT_QTY": 0,
+        "PCH_CUST_CNT": 0,
+        "GRID_TYPE": "D"
+    }
+*/
 
-                lDate2.push(item.VST_DT);
-                searchDate.push(item.VST_DT);
-                dateMap.put(item.VST_DT, 0);
-            }
-            if(tf1 < 0 && item.EXCLL_CUST_LNGE_CD != undefined && item.EXCLL_CUST_LNGE_CD != 'undefined' && item.EXCLL_CUST_LNGE_CD != '' ){
-                codeMap.put(item.EXCLL_CUST_LNGE_CD, 'serData'+i);
-                codeMap.put('serData'+i, item.COMN_CD_NM);
-                gubun.push(item.EXCLL_CUST_LNGE_CD);
-                i++;
-            }
+    lDate = mvgLngeTotAvgDt.filter(row => row['GRID_TYPE'] === 'D')
+        .filter(row => _filter1(row))
+        .map(row => _createDayHtml(row));
+
+    lDate2 = mvgLngeTotAvgDt.filter(row => row['GRID_TYPE'] === 'D')
+        .filter(row => _filter1(row))
+        .map(row => row['VST_DT']);
+        
+    searchDate = mvgLngeTotAvgDt.filter(row => row['GRID_TYPE'] === 'D')
+        .filter(row => _filter1(row))
+        .map(row => row['VST_DT']);
+
+    dateMap = mvgLngeTotAvgDt.filter(row => row['GRID_TYPE'] === 'D')
+        .filter(row => _filter1(row))
+        .reduce((map, row) => map.push(row['VST_DT'], 0), new Map());
+
+
+    var i = 1;
+
+    codeMap = mvgLngeTotAvgDt.filter(row => row['GRID_TYPE'] === 'D')
+        .filter(row => _filter2(row))
+        .filter(row => !isEmpty(row['EXCLL_CUST_LNGE_CD']))
+        .reduce((map, row) => {
+            map.push(`${row['EXCLL_CUST_LNGE_CD']}, serData${i}`);
+            map.push(`serData${i}, ${row['COMN_CD_NM']}`);
+            i++;
+        }, new Map());
+
+    gubun = mvgLngeTotAvgDt.filter(row => row['GRID_TYPE'] === 'D')
+        .filter(row => _filter2(row))
+        .filter(row => !isEmpty(row['EXCLL_CUST_LNGE_CD']))
+        .map(row => row['EXCLL_CUST_LNGE_CD']);
+
+
+
+    _filter1({VST_DT}, lDate2) {
+        return !lDate2.includes(VST_DT);
+    }
+
+    _filter2({EXCLL_CUST_LNGE_CD}, gubun) {
+        return !gubun.includes(EXCLL_CUST_LNGE_CD);
+    }
+
+
+    _createDayHtml({DT_DAY, DT_LOW}){
+        switch (Number(DT_DAY)) {
+            case 1: //일요일
+                return `<div style='color:red;'>${DT_LOW}</div>`;
+            case 7: //토요일
+                return `<div style='color:blue;'>${DT_LOW}</div>`;
+            default:
+                return DT_LOW;
         }
-    })
+    }
 
+
+    /**
+     * 날짜 수집기
+     */
+
+    
+    console.log(`gubun ===>>  ${gubun}`);
+    console.log(`codeMap ===>>  ${JSON.stringify(codeMap)}`);
+    console.log(`dateMap ===>>  ${JSON.stringify(dateMap)}`);
+    console.log(`searchDate ===>>  ${searchDate}`);
+    console.log(`lDate ===>>  ${lDate}`);
+    console.log(`lDate2 ===>>  ${lDate2}`);
+
+
+    return;
+
+
+
+    /* 모르겠음
+    */
     // 라운지코드가 null 이여도 그래프는 일/월별 0으로 보여주기 위해 추가
     if(codeMap.size() < 1){
         codeMap.put('99', 'serData9');
@@ -58,10 +379,12 @@ function makeMvgLngeAvgDt(type){
     // 라운지 이용현황 상세 재조회 (그래프오른쪽 데이터)
     searchInfoData(lDate2[lDate2.length-1], lngType);
 
+
     var validDt = [];
     var listDt = '';
 
     $.each(mvgLngeTotAvgDt, function(index, item){
+        //14일전 첫일
         if(index == 0){
             listDt = item.VST_DT;
         }
@@ -281,3 +604,14 @@ function makeMvgLngeAvgDt(type){
         $.jqplot ('graph_line', tot, fn_getLineConfig1());
     }
 }
+
+
+
+makeMvgLngeAvgDt();
+
+
+
+
+
+
+
